@@ -11,7 +11,7 @@ EOF
     exit 1
 }
 
-if [ $# -lt 2 ]; then
+if [ $# -eq 0 ]; then
    usage
 fi
 
