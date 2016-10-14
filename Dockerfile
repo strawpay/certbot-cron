@@ -7,6 +7,8 @@ RUN apt-get update && \
 
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
+ADD timestamp /timestamp
+RUN chmod +x /timestamp
 
 ENTRYPOINT ["/start.sh"]
 CMD [""]

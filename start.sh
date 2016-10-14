@@ -11,6 +11,10 @@ EOF
     exit 1
 }
 
+#timestamp() {
+#    echo $(date +'%Y-%m-%d %H:%M:%S.%s '; $*)
+#}
+
 if [ $# -eq 0 ]; then
    usage
 fi
@@ -18,7 +22,7 @@ fi
 
 case $1 in 
 
-    scheduled)
+    cron)
 	shift 1
 	if [ $# -eq 0 ]; then usage; fi
 	echo "Scheduling cron:$CRON_SCHEDULE, command: certbot $*" 
@@ -26,11 +30,11 @@ case $1 in
 	if [[ ! -e "$LOGFIFO" ]]; then
 	    mkfifo "$LOGFIFO"
 	fi
-	echo -e "$CRON_SCHEDULE /opt/certbot/venv/bin/certbot $* > $LOGFIFO 2>&1" | crontab -
+	echo -e "$CRON_SCHEDULE /timestamp /opt/certbot/venv/bin/certbot $* > $LOGFIFO 2>&1" | crontab -
 	cron
 	tail -f "$LOGFIFO"
 	;;
     
     *)
-	certbot $*
+        certbot $*
 esac
