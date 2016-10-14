@@ -15,7 +15,7 @@ The container will run once, performing the specfied certbot operation and exit.
 ## Scheduled mode
 Schedules the certbot command. <certbot options> is passed verbatim to the certbot command.
 The container sets up a cron job and continues running, outputting the result of the ran jobs.
-The schedule defaults to "11 3 * * *"
+The schedule defaults to "11 3 \* \* \*"
 Set the environment variable CRON_SCHEDULE to specify your own schedule.
 
 ### Examples:
