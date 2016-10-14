@@ -3,10 +3,10 @@ strawpay/certbot
 
 Docker container with certbot and  cron support. The certbot comand comes from docker image [quay.io/letsencrypt/letsencrypt](https://quay.io/letsencrypt/letsencrypt). See [certbot](https://certbot.eff.org/) for information about certbot.
 
-There are two modes of operations single and schduled:
+There are two modes of operations single and schduled via cron:
 
     docker run ... strawpay/docker-certbot <certbot options>
-    docker run ... strawpay/docker-certbot scheduled <certbot options>
+    docker run ... strawpay/docker-certbot cron <certbot options>
 
 ## Single mode
 The container will run once, performing the specfied certbot operation and exit.
@@ -30,11 +30,11 @@ Run once, checking what renew would do
 
 Renew at 03:11 every day
 
-    docker run -d strawpay/docker-certbot scheduled renew -q
+    docker run -d strawpay/docker-certbot cron renew -q
 
 Renew at 5:15 every day 
 
     docker run -d 
     	-e CRON_SCHEDULE='15 5 * * *' \
-    	strawpay/docker-certbot scheduled renew 
+    	strawpay/docker-certbot cron renew -q
 

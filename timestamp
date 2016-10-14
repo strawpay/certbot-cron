@@ -1,2 +1,2 @@
 #!/bin/sh
-echo $(date +"%Y-%m-%d %H:%M:%S certbot $*:"; $*)
+echo $(date +"%Y-%m-%d %H:%M:%S certbot $*:"; /opt/certbot/venv/bin/certbot $*)

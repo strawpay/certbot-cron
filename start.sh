@@ -30,7 +30,7 @@ case $1 in
 	if [[ ! -e "$LOGFIFO" ]]; then
 	    mkfifo "$LOGFIFO"
 	fi
-	echo -e "$CRON_SCHEDULE /timestamp /opt/certbot/venv/bin/certbot $* > $LOGFIFO 2>&1" | crontab -
+	echo -e "$CRON_SCHEDULE /timestamp $* > $LOGFIFO 2>&1" | crontab -
 	cron
 	tail -f "$LOGFIFO"
 	;;
