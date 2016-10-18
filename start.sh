@@ -11,10 +11,6 @@ EOF
     exit 1
 }
 
-#timestamp() {
-#    echo $(date +'%Y-%m-%d %H:%M:%S.%s '; $*)
-#}
-
 if [ $# -eq 0 ]; then
    usage
 fi
@@ -36,5 +32,5 @@ case $1 in
 	;;
     
     *)
-        certbot $*
+        /timestamp $*
 esac
